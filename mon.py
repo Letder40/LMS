@@ -129,14 +129,11 @@ def detect_arp_spoofing():
                 macs.append(i)
 
         for mac in macs:
-            counter = 0
-            for mac_tocompare in macs:
-                if(counter != 0 and mac == mac_tocompare):
-                    bot_send_message("[!] mac {mac} has been clonned".format(mac=mac))
+            if macs.count(mac) != 1: 
+                bot_send_message("[!] mac {mac} has been clonned".format(mac=mac))
         time.sleep(8)
                 
 
-#def icmp_flood_detect(): 
 if __name__ == "__main__":
     thread1 = threading.Thread(target=set_timer)
     thread2 = threading.Thread(target=detect_arp_spoofing)
